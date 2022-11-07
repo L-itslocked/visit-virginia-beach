@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
     <link
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"
       rel="stylesheet"
@@ -12,6 +14,11 @@
       integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3"
       crossorigin="anonymous"
     ></script>
+    <script
+      src="https://kit.fontawesome.com/11e289fd06.js"
+      crossorigin="anonymous"
+    ></script>
+
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -31,105 +38,226 @@
       nav div {
         margin-left: 40px;
       }
+      i {
+        font-size: 20px;
+        color: #97afc3;
+      }
+      small,
+      footer {
+        font-size: 8px;
+      }
+      footer {
+        text-align: right;
+      }
+      footer i {
+        font-size: 10px;
+      }
       .background-img img {
         display: flex;
         position: relative;
-        max-width: 1400px;
         margin: 0 auto;
       }
-      .o-scroll {
-        border-radius: 10px;
-        color: #453a37;
-        position: absolute;
-        padding: 20px 100px;
-        font-size: xx-large;
+
+      .display-5 {
+        margin-right: -475px;
+        margin-top: -660px;
+        margin-left: 550px;
+      }
+      .display-1 {
+        margin-top: -645px;
+        margin-left: 500px;
+      }
+      .heading {
+        color: #000;
+        position: relative;
         display: flex;
-        text-align: right;
-        margin-top: -735px;
-        margin-left: 800px;
+        line-height: 1.5;
+        letter-spacing: 2px;
+      }
+
+      .subtext {
+        color: #fff;
+        background-color: #5d6b80;
+        font-size: 28px;
+        position: relative;
+        padding: 20px 20px 80px;
+        margin-top: -125px;
+        margin-left: 1000px;
+        border-radius: 5px;
+        text-align: center;
+      }
+
+      .btn {
+        font-size: 18px;
+        position: relative;
+        margin-top: -120px;
+        margin-left: 1040px;
+      }
+      .middle-grid-img {
+        margin-top: -40px;
       }
     </style>
   </head>
   <body>
-    <nav>
-      <div>Tours</div>
-      <div>Beaches</div>
-      <div>Attractions</div>
-      <div>Travelers Blog</div>
-      <div id="vb-temperature"></div>
+    <nav class="navbar navbar-expand-lg bg-light">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="#">
+          <i class="fa-solid fa-fish-fins"></i>
+        </a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarNav"
+          aria-controls="navbarNav"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav text-align-right">
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="#">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Beaches</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link">Attractions</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Travelers Blog</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" id="vb-temperature">temp</a>
+            </li>
+          </ul>
+        </div>
+      </div>
     </nav>
+
     <div class="background-img">
       <img
         src="https://s3.amazonaws.com/shecodesio-production/uploads/files/000/051/367/original/jenna-lee-zFk1FdVSlOs-unsplash.jpg?1667499674"
         class="img-fluid shadow-sm rounded"
       />
     </div>
-    <div class="o-scroll" id="js-scroll" data-scroll-container>
-      <div data-scroll-section>
-        <div class="o-container">
-          <header class="c-header" id="header">
-            <div
-              class="c-header_heading"
-              data-scroll
-              data-scroll-speed="-8"
-              data-scroll-position="top"
-              data-scroll-target="#header"
-              data-scroll-repeat
-            >
-              <div class="o-layout">
-                <div
-                  class="o-layout_item u-1/2"
-                  data-scroll
-                  data-scroll-direction="horizontal"
-                  data-scroll-speed="-2"
-                  data-scroll-position="top"
-                  data-scroll-target="#header"
-                >
-                  <span class="u-label c-header_heading_label">
-                    <h3>visit</h3>
-                  </span>
-                </div>
-                <div
-                  class="o-layout_item u-1/2"
-                  data-scroll
-                  data-scroll-direction="horizontal"
-                  data-scroll-speed="2"
-                  data-scroll-position="top"
-                  data-scroll-target="#header"
-                >
-                  <div class="u-text-right">
-                    <h1>Virginia Beach</h1>
-                    <h6>fancy quote here</h6>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="buttons">
-              <button>Learn More</button>
-              <button>Plan a visit</button>
-            </div>
+    <small>
+      Photo by
+      <a
+        href="https://unsplash.com/@jennalee89?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText"
+        >Jenna Lee</a
+      >
+      on
+      <a
+        href="https://unsplash.com/s/photos/virginia-beach?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText"
+        >Unsplash</a
+      ></small
+    >
 
-            <script>
-              function displayTemperature(response) {
-                let temperature = document.querySelector("#vb-temperature");
-                temperature.innerHTML = Math.round(`${currentTemperature}°F`);
-              }
+    <div class="container">
+      <span class="heading">
+        <div class="row">
+          <div class="col-md-12 display-5">visit</div>
+        </div>
 
-              function currentTemperature(city) {
-                let lat = 36.8516;
-                let lon = 75.9792;
-                let apiKey = "8cac06f7ab6c10287cd06a316ff84a57";
-                let apiUrl1 = `http://api.openweathermap.org/geo/1.0/direct?q={virginia+beach},{va},{us}&appid=${apiKey}&units=imperial`;
-                let apiUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${apiKey}&units=imperial`;
-
-                axios.get(apiUrl1).then(displayTemperature);
-
-                currentTemperature();
-              }
-            </script>
-          </header>
+        <div class="row">
+          <div class="col-md-12 display-1">Virginia Beach</div>
+        </div>
+      </span>
+    </div>
+    <br />
+    <div class="container">
+      <div class="row">
+        <div class="col-md-2 subtext">Seas the day</div>
+      </div>
+      <div class="row">
+        <div class="col-md-12">
+          <div
+            class="btn btn-md btn-outline-light shadow-md rounded text-lowercase"
+          >
+            Plan a visit
+          </div>
         </div>
       </div>
     </div>
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-4">
+          <img
+            src="https://s3.amazonaws.com/shecodesio-production/uploads/files/000/051/366/original/jenna-lee-y_UoVbNBU_Q-unsplash.jpg?1667499660"
+            class="img-fluid"
+          /><small
+            >Photo by
+            <a
+              href="https://unsplash.com/@jennalee89?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText"
+              >Jenna Lee</a
+            >
+            on
+            <a
+              href="https://unsplash.com/s/photos/virginia-beach?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText"
+              >Unsplash</a
+            ></small
+          >
+        </div>
+        <div class="col-sm-4 middle-grid-img">
+          <img
+            src="https://s3.amazonaws.com/shecodesio-production/uploads/files/000/052/000/original/nathaniel-villaire-eauO9t__qTU-unsplash.jpg?1667792280"
+            class="img-fluid"
+          />
+          <small
+            >Photo by
+            <a
+              href="https://unsplash.com/@nathanielvillaire?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText"
+              >Nathaniel Villaire</a
+            >
+            on
+            <a
+              href="https://unsplash.com/s/photos/norfolk%2C-va?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText"
+              >Unsplash</a
+            >
+          </small>
+        </div>
+        <div class="col-sm-4">
+          <img
+            src="https://s3.amazonaws.com/shecodesio-production/uploads/files/000/051/998/original/drew-mentzer-2UZogZav21o-unsplash.jpg?1667791990"
+            class="img-fluid"
+          />
+          <small
+            >Photo by
+            <a
+              href="https://unsplash.com/@mentzerdrew?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText"
+              >Drew Mentzer</a
+            >
+            on
+            <a
+              href="https://unsplash.com/s/photos/virginia-beach?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText"
+              >Unsplash</a
+            >
+          </small>
+        </div>
+      </div>
+    </div>
+
+    <footer>
+      <br />
+      <i class="fa-solid fa-sailboat"></i>
+      <a href="#"> Open-source </a>code by: Laura Doyon
+    </footer>
+    <script>
+      function displayTemperature(response) {
+        let vbTemperature = document.querySelector("#vb-temperature");
+        let temperature = Math.round(response.data.main.temp);
+        vbTemperature.innerHTML = `${temperature}°F`;
+      }
+
+      function currentTemperature(city) {
+        let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=virginia+beach&appid=8cac06f7ab6c10287cd06a316ff84a57&units=imperial`;
+
+        axios.get(apiUrl).then(displayTemperature);
+      }
+      currentTemperature();
+    </script>
   </body>
 </html>
