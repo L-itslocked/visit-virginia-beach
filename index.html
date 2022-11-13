@@ -54,7 +54,7 @@
         font-size: 8px;
       }
       small {
-        padding: 0 0 0 10px;
+        padding: 0 0 -10px 10px;
       }
       p {
         padding-top: 50px;
@@ -79,8 +79,8 @@
       }
       .heading-textbox {
         position: absolute;
-        bottom: 50px;
-        right: 50px;
+        bottom: 75px;
+        right: 75px;
         background-color: #fff;
         opacity: 1;
         color: #5d6b80;
@@ -93,11 +93,16 @@
         color: #fff;
         background-color: #5d6b80;
         font-size: 28px;
-        display: flex;
+        display: grid;
         padding: 20px;
-        border-radius: 5px;
-        margin-top: -100px;
         position: relative;
+        width: 300px;
+        border-radius: 4px;
+      }
+      .seas-box .btn {
+        margin: 0 auto;
+        display: block;
+        width: 125px;
       }
 
       .btn {
@@ -220,16 +225,23 @@
     </div>
 
     <br />
-    <div class="container seas-box">
+    <div class="container seas-box-container">
       <div class="row">
-        <div class="col-sm-12 subtext text-center">Seas the day</div>
-      </div>
-      <div class="row">
-        <div class="col-sm-12">
-          <div
-            class="btn btn-md btn-outline-light shadow-md rounded text-lowercase"
-          >
-            Plan a visit
+        <div class="col-md-12">
+          <div class="container seas-box">
+            <div class="row">
+              <div class="col-md-12 subtext text-center">Seas the day</div>
+            </div>
+            <br />
+            <div class="row">
+              <div class="col-md-12">
+                <div
+                  class="btn btn-md btn-outline-light shadow-md rounded text-lowercase mb-4"
+                >
+                  Plan a visit
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -337,10 +349,10 @@
         let wind = document.querySelector("#beach-wind");
         let beachHumidity = document.querySelector("#beach-humidity");
         let uvIndex = document.querySelector("#beach-uvindex");
-        let windspeed = Math.round(response.data.main.wind);
         let temperature = Math.round(response.data.main.temp);
         let description = response.data.weather[0].main;
         let humidity = Math.round(response.data.main.humidity);
+        let windspeed = Math.round(response.data.main.wind);
         vbTemperature.innerHTML = `${temperature}°F ${description}`;
         beachTemperature.innerHTML = `${temperature}°F `;
         beachDescription.innerHTML = `${description}`;
