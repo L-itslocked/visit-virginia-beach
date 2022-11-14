@@ -76,19 +76,29 @@
         margin: 0 auto;
         width: 100%;
         height: auto;
+        opacity: 2;
       }
       .heading-textbox {
         position: absolute;
-        bottom: 75px;
-        right: 75px;
         background-color: #fff;
+        text-align: right;
+        top: 510px;
+        right: 75px;
         opacity: 1;
         color: #5d6b80;
-        padding-left: 25px;
-        padding-right: 25px;
+        padding-left: 50px;
+        padding-right: 50px;
         border-radius: 4px;
       }
-
+      @media (max-width: 900px) {
+        .heading-textbox {
+          right: 50px;
+          top: 75px;
+          background: transparent;
+          text-align: right;
+          color: #3e4958;
+        }
+      }
       .seas-box {
         color: #fff;
         background-color: #5d6b80;
@@ -351,13 +361,14 @@
         let uvIndex = document.querySelector("#beach-uvindex");
         let temperature = Math.round(response.data.main.temp);
         let description = response.data.weather[0].main;
-        let humidity = Math.round(response.data.main.humidity);
-        let windspeed = Math.round(response.data.main.wind);
+        let humidity = Math.round(response.data.main.humidity) + "%";
+        let windspeed =
+          "🌬 " + Math.round(response.data.wind.speed * 2.237) + " mph";
         vbTemperature.innerHTML = `${temperature}°F ${description}`;
         beachTemperature.innerHTML = `${temperature}°F `;
         beachDescription.innerHTML = `${description}`;
-        beachHumidity.innerHTML = `${humidity}%`;
-        wind.innerHTML = `${windspeed} mph`;
+        beachHumidity.innerHTML = `${humidity}`;
+        wind.innerHTML = `${windspeed}`;
 
         //uvIndex.innerHTML =  `${}`
       }
