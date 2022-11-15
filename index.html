@@ -312,12 +312,11 @@
           />
           <div class="float">
             <div class="float-text">
-              Beach Conditions:
+              Beach Conditions
               <div id="beach-temp"></div>
-              <div id="beach-description"></div>
               <div id="beach-wind"></div>
               <div id="beach-humidity"></div>
-              <div id="beach-uvindex"></div>
+              <div id="beach-description"></div>
             </div>
           </div>
           <small
@@ -364,18 +363,16 @@
         let humidity = Math.round(response.data.main.humidity) + "%";
         let windspeed =
           "🌬 " + Math.round(response.data.wind.speed * 2.237) + " mph";
-        vbTemperature.innerHTML = `${temperature}°F ${description}`;
-        beachTemperature.innerHTML = `${temperature}°F `;
-        beachDescription.innerHTML = `${description}`;
-        beachHumidity.innerHTML = `${humidity}`;
-        wind.innerHTML = `${windspeed}`;
 
-        //uvIndex.innerHTML =  `${}`
+        vbTemperature.innerHTML = `${temperature}°F | ${description}`;
+        beachTemperature.innerHTML = `🌡 ${temperature}°F `;
+        beachDescription.innerHTML = `${description}`;
+        beachHumidity.innerHTML = `💧 ${humidity}`;
+        wind.innerHTML = `${windspeed}`;
       }
 
       function currentTemperature(city) {
         let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=virginia+beach&appid=8cac06f7ab6c10287cd06a316ff84a57&units=imperial`;
-
         axios.get(apiUrl).then(displayTemperature);
       }
       currentTemperature();
